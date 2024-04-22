@@ -1,0 +1,17 @@
+# Ignore Everything
+*
+
+# Do not ignore .gitignore
+!.gitignore
+
+# Do not ignore Java Source Code Files
+!*.java
+
+# Do not ignore Text Files, CSV Files, Image Files and FXMl files
+!*.txt
+!*.csv
+!*.png
+!*.fxml
+
+!*/
+/bin/
