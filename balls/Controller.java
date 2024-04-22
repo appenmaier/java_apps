@@ -22,15 +22,15 @@ public class Controller implements Initializable {
 
     canvas.setOnMouseClicked(e -> {
       Random random = new Random();
-      int r = random.nextInt(100);
+      int r = random.nextInt(25, 50);
       int x = (int) e.getX();
       int y = (int) e.getY();
       double red = random.nextDouble(1);
       double green = random.nextDouble(1);
       double blue = random.nextDouble(1);
       double opacity = random.nextDouble(0.5, 1);
-      int speedX = random.nextInt(25);
-      int speedY = random.nextInt(25);
+      int speedX = random.nextInt(5, 15);
+      int speedY = random.nextInt(5, 15);
       Color color = new Color(red, green, blue, opacity);
       model.addBall(new Ball(r, x, y, color, speedX, speedY));
     });

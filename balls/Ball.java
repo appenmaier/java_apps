@@ -48,18 +48,18 @@ public class Ball {
     x += speedX;
     y += speedY;
     if (x < minX) {
-      x = r;
+      x = minX;
       speedX = -speedX;
     }
-    if (x + 2 * r >= maxX) {
+    if (x + 2 * r > maxX) {
       x = maxX - 2 * r;
       speedX = -speedX;
     }
     if (y < minY) {
-      y = r;
+      y = minY;
       speedY = -speedY;
     }
-    if (y + 2 * r >= maxY) {
+    if (y + 2 * r > maxY) {
       y = maxY - 2 * r;
       speedY = -speedY;
     }
