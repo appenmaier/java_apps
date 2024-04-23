@@ -25,22 +25,7 @@ public class Controller implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     model = Model.getInstance();
 
-    AnimationTimer timer = new AnimationTimer() {
-      @Override
-      public void handle(long l) {
-        Color color = model.getLED().getColor();
-        layer1.setFill(color);
-        if (model.getLED().isShining()) {
-          layer2.setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 0.75));
-          layer3.setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 0.5));
-          layer4.setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 0.25));
-        } else {
-          layer2.setFill(Color.TRANSPARENT);
-          layer3.setFill(Color.TRANSPARENT);
-          layer4.setFill(Color.TRANSPARENT);
-        }
-      }
-    };
+    LEDAnimationTimer timer = new LEDAnimationTimer();
     timer.start();
   }
 
@@ -57,6 +42,23 @@ public class Controller implements Initializable {
   @FXML
   public void switchColor(ActionEvent actionEvent) {
     model.getLED().switchColor();
+  }
+
+  private class LEDAnimationTimer extends AnimationTimer {
+    @Override
+    public void handle(long l) {
+      Color color = model.getLED().getColor();
+      layer1.setFill(color);
+      if (model.getLED().isShining()) {
+        layer2.setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 0.75));
+        layer3.setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 0.5));
+        layer4.setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 0.25));
+      } else {
+        layer2.setFill(Color.TRANSPARENT);
+        layer3.setFill(Color.TRANSPARENT);
+        layer4.setFill(Color.TRANSPARENT);
+      }
+    }
   }
 
 }
