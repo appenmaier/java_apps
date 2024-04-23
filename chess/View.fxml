@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.geometry.Insets?>
+<?import chess.ChessBoard?>
 
-<BorderPane fx:id="root" prefHeight="530.0" prefWidth="530.0"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="chess.Controller" />
+<ChessBoard fx:id="board" prefHeight="530.0"
+	prefWidth="530.0" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="chess.Controller">
+	<padding>
+		<Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+	</padding>
+</ChessBoard>

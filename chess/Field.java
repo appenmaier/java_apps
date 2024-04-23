@@ -7,16 +7,16 @@ import javafx.scene.shape.Rectangle;
 public class Field extends StackPane {
 
   private final int row;
-  private final int column;
+  private final char column;
   private boolean isSelected;
 
-  public Field(int column, int row, Color color) {
+  public Field(int row, char column, Color color) {
     this.row = row;
     this.column = column;
 
-    Rectangle background = new Rectangle(60, 60);
-    background.setFill(color);
-    getChildren().add(background);
+    Rectangle backgroundLayer = new Rectangle(60, 60);
+    backgroundLayer.setFill(color);
+    getChildren().add(backgroundLayer);
   }
 
   public boolean isSelected() {
@@ -28,10 +28,12 @@ public class Field extends StackPane {
   }
 
   public void setFigure(ChessFigure figure) {
-    if (getChildren().size() == 1) {
-      getChildren().add(figure);
-    } else {
+    if (figure == null) {
+      getChildren().remove(1);
+    } else if (getChildren().size() == 2) {
       getChildren().set(1, figure);
+    } else {
+      getChildren().add(figure);
     }
   }
 
@@ -39,7 +41,7 @@ public class Field extends StackPane {
     return getChildren().size() == 2 ? (ChessFigure) getChildren().get(1) : null;
   }
 
-  public Rectangle getRectangle() {
+  public Rectangle getBackgroundLayer() {
     return (Rectangle) getChildren().get(0);
   }
 
@@ -47,13 +49,13 @@ public class Field extends StackPane {
     return row;
   }
 
-  public int getColumn() {
+  public char getColumn() {
     return column;
   }
 
   @Override
   public String toString() {
-    return row + "-" + column;
+    return column + "" + row;
   }
 
 }

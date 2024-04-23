@@ -2,9 +2,9 @@ package chess;
 
 public enum ChessColor {
 
-  BLACK("schwarz"), WHITE("weiß");
+  BLACK("schwarz"), WHITE("weiss");
 
-  private String description;
+  private final String description;
 
   ChessColor(String description) {
     this.description = description;

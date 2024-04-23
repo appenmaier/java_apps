@@ -2,76 +2,76 @@ package chess;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.effect.ColorAdjust;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.input.MouseEvent;
 
 public class Controller implements Initializable {
 
   @FXML
-  private BorderPane root;
-  private Field selectedField;
+  private ChessBoard board;
+  private Field oldField;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    ChessBoard board = new ChessBoard();
-    root.getChildren().add(board);
-
     for (Field lines[] : board.getFields()) {
       for (Field field : lines) {
-        field.setOnMouseClicked(new OnMouseClickedEventHandler());
+        field.setOnMouseClicked(new FieldClickedEventHandler());
       }
     }
   }
 
-  public class OnMouseClickedEventHandler implements EventHandler<Event> {
-
+  private class FieldClickedEventHandler implements EventHandler<MouseEvent> {
     @Override
-    public void handle(Event event) {
-      Field field = (Field) event.getSource();
+    public void handle(MouseEvent event) {
+      Field newField = (Field) event.getSource();
+      ChessFigure oldFigure = oldField == null ? null : oldField.getFigure();
+      ChessFigure newFigure = newField.getFigure();
+      boolean oldFieldIsNull = oldField == null ? true : false;
+      boolean newFieldIsEmpty = newField.getFigure() == null ? true : false;
 
-      boolean isSelectedField = selectedField == null ? true : false;
-      boolean isEmptyField = field.getFigure() == null ? true : false;
-
-      if (isSelectedField && !isEmptyField) {
-        selectedField = field;
-        field.getRectangle().setEffect(new ColorAdjust(0, 0, 0.5, 0));
+      if (oldFieldIsNull && !newFieldIsEmpty) {
+        setHighlight(newField, true);
+        oldField = newField;
         return;
       }
 
-      if (!isSelectedField && selectedField == field) {
-        selectedField = null;
-        field.getRectangle().setEffect(new ColorAdjust(0, 0, 0, 0));
+      if (!oldFieldIsNull && oldField == newField) {
+        setHighlight(newField, false);
+        oldField = null;
         return;
       }
 
-      if (!isSelectedField && !isEmptyField
-          && !field.getFigure().getColor().equals(selectedField.getFigure().getColor())) {
-        ChessFigure figure = selectedField.getFigure();
-        System.out.println(figure + " zieht von " + selectedField + " auf " + field
-            + " und schlaegt " + field.getFigure());
-        selectedField.getChildren().remove(1);
-        field.setFigure(figure);
-        selectedField.getRectangle().setEffect(new ColorAdjust(0, 0, 0, 0));
-        selectedField = null;
+      if (!oldFieldIsNull && !newFieldIsEmpty
+          && !newFigure.getColor().equals(oldFigure.getColor())) {
+        System.out.println(oldFigure + " zieht von " + oldField + " auf " + newField
+            + " und schlaegt " + newFigure);
+        oldField.setFigure(null);
+        newField.setFigure(oldFigure);
+        setHighlight(oldField, false);
+        oldField = null;
         return;
       }
 
-      if (!isSelectedField && isEmptyField) {
-        System.out
-            .println(selectedField.getFigure() + " zieht von " + selectedField + " auf " + field);
-        ChessFigure figure = selectedField.getFigure();
-        selectedField.getChildren().remove(1);
-        field.setFigure(figure);
-        selectedField.getRectangle().setEffect(new ColorAdjust(0, 0, 0, 0));
-        selectedField = null;
+      if (!oldFieldIsNull && newFieldIsEmpty) {
+        System.out.println(oldFigure + " zieht von " + oldField + " auf " + newField);
+        oldField.setFigure(null);
+        newField.setFigure(oldFigure);
+        setHighlight(oldField, false);
+        oldField = null;
         return;
       }
     }
+  }
 
+  private void setHighlight(Field field, boolean highlight) {
+    if (highlight) {
+      field.getBackgroundLayer().setEffect(new ColorAdjust(0, 0, 0.5, 0));
+    } else {
+      field.getBackgroundLayer().setEffect(new ColorAdjust(0, 0, 0, 0));
+    }
   }
 
 }

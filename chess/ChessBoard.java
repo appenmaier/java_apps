@@ -1,30 +1,26 @@
 package chess;
 
-import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 public class ChessBoard extends GridPane {
 
-  private Field[][] fields;
+  private final Field[][] fields;
 
   public ChessBoard() {
     fields = new Field[8][8];
-
-    setPadding(new Insets(25, 25, 25, 25));
 
     for (int i = 0; i < 8; i++) {
       for (int j = 0; j < 8; j++) {
         Color color = i % 2 == 0 ? j % 2 == 0 ? Color.SANDYBROWN : Color.SADDLEBROWN
             : j % 2 == 0 ? Color.SADDLEBROWN : Color.SANDYBROWN;
-        Field s = new Field(i, j, color);
+        Field s = new Field(j + 1, (char) (i + 65), color);
         add(s, i, j);
         fields[i][j] = s;
       }
     }
 
-    /* White */
     fields[0][0].setFigure(new ChessFigure(ChessFigureType.ROOK, ChessColor.WHITE,
         new Image(getClass().getResourceAsStream("rook_white.png"))));
     fields[1][0].setFigure(new ChessFigure(ChessFigureType.KNIGHT, ChessColor.WHITE,
@@ -46,7 +42,6 @@ public class ChessBoard extends GridPane {
           new Image(getClass().getResourceAsStream("pawn_white.png"))));
     }
 
-    /* Black */
     fields[0][7].setFigure(new ChessFigure(ChessFigureType.ROOK, ChessColor.BLACK,
         new Image(getClass().getResourceAsStream("rook_black.png"))));
     fields[1][7].setFigure(new ChessFigure(ChessFigureType.KNIGHT, ChessColor.BLACK,

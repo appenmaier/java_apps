@@ -25,7 +25,8 @@ public class ChessFigure extends ImageView {
 
   @Override
   public String toString() {
-    return type.getDescription();
+    return color.getDescription() + (type.equals(ChessFigureType.QUEEN) ? "e " : "er ")
+        + type.getDescription();
   }
 
 }
