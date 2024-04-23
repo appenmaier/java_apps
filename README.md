@@ -3,7 +3,7 @@
 ## Vorbereitungen
 
 - Installiere ein [JDK](https://www.oracle.com/java/technologies/downloads/#jdk21-windows)
-- Installiere [Eclipse](https://www.eclipse.org/) oder eine andere IDE
+- Installiere [Eclipse](https://www.eclipse.org/)
 - Installiere [Git](https://git-scm.com/downloads)
 - Installiere das Eclipse-Plugin [e(fx)clipse](http://download.eclipse.org/efxclipse/updates-released/)
 - Installiere den [Scene Builder](https://gluonhq.com/products/scene-builder/)
@@ -35,17 +35,21 @@
 - Navigiere zu `Window – Preferences – JavaFX`
 - Gib beim Feld `SceneBuilder executable` den Wert `[Pfad zur SceneBuilder.exe]/SceneBuilder.exe` ein und betätige die Drucktaste `Apply and Close`
 
-## Klone das Remote Repository
+## Klone das remote Repository
 
 - Starte die Kommandozeile (z.B. Windows PowerShell)
 - Führe den Befehl `git clone https://github.com/appenmaier/java_apps "[Pfad/Der Name Deines lokalen Repositorys]"` aus, um das remote Repository zu klonen
 
-## Binde das lokale Repository in Eclipse ein und bin die JavaFX User Library ein
+## Binde das lokale Repository in Eclipse ein
 
 - Starte Eclipse
 - Führe die Funktion `File - Import... - General - Projects from Folder or Archive` aus und betätige die Drucktaste `Next >`
 - Gib nachfolgende Informationen ein und betätige die Drucktaste `Finish`
   - Import source: `[Pfad/Der Name Deines lokalen Repositorys]`
+
+## Binde die JavaFX User Library in das Projekt ein
+
+- Starte Eclipse
 - Navigiere im Package Explorer zum Projekt `java_apps` und wähle dieses aus
 - Navigiere zu `Project - Properties - Java Build Path` und wähle den Reiter `Libraries` aus
 - Wähle die Option `Classpath` aus und betätige die Drucktaste `Add Library...`
