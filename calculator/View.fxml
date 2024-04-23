@@ -6,13 +6,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="5.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.Controller">
-  <children>
-    <TextField fx:id="inputTextField" />
-    <Button onAction="#calculate" text="Berechnen" />
-    <Label fx:id="outputLabel" /> 
-  </children>
-  <padding>
-    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-  </padding>
+<VBox alignment="CENTER" spacing="5.0"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="calculator.Controller">
+	<children>
+		<TextField fx:id="inputTextField" />
+		<Button onAction="#calculate" text="Berechnen" />
+		<Label fx:id="outputLabel" />
+	</children>
+	<padding>
+		<Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+	</padding>
 </VBox>

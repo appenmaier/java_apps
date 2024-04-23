@@ -6,9 +6,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="25.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dice.Controller">
+<VBox alignment="CENTER" spacing="25.0"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="dice.Controller">
 	<children>
-		<ImageView fx:id="diceImageView"/>
+		<ImageView fx:id="diceImageView" />
 		<Button onAction="#rollTheDice" text="Würfeln" />
 	</children>
 	<padding>

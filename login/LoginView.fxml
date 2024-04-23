@@ -9,13 +9,22 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane hgap="5.0" vgap="5.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
+<GridPane hgap="5.0" vgap="5.0"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="login.LoginController">
 	<children>
-		<Label text="Benutzername" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-		<TextField fx:id="userNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-		<Label text="Passwort" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-		<PasswordField fx:id="passwordPasswordField" accessibleRole="PASSWORD_FIELD" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-		<Button onAction="#login" text="Anmelden" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2" GridPane.Halignment="CENTER" />
+		<Label text="Benutzername" GridPane.columnIndex="0"
+			GridPane.rowIndex="0" />
+		<TextField fx:id="userNameTextField"
+			GridPane.columnIndex="1" GridPane.rowIndex="0" />
+		<Label text="Passwort" GridPane.columnIndex="0"
+			GridPane.rowIndex="1" />
+		<PasswordField fx:id="passwordPasswordField"
+			accessibleRole="PASSWORD_FIELD" GridPane.columnIndex="1"
+			GridPane.rowIndex="1" />
+		<Button onAction="#login" text="Anmelden"
+			GridPane.columnIndex="0" GridPane.rowIndex="2"
+			GridPane.columnSpan="2" GridPane.Halignment="CENTER" />
 	</children>
 	<padding>
 		<Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
