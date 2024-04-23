@@ -20,15 +20,13 @@
 - Wähle den Eintrag `JavaFX [JavaFX SDK Version]` aus und betätige die Drucktaste `Add External JARs...`
 - Wähle alle .jar-Dateien des Ordners `C:\Progam Files\Java\javafx-sdk-[JavaFX SDK Version]\lib` aus und betätige die Drucktaste `Open` 
 - Führe für jede .jar-Datei nachfolgende Schritte durch:
-    - Wähle den Eintrag `JavaFX [JavaFX SDK Version] – \<.jar-Datei\> – Source attachment: (None)` aus und betätige die Drucktaste `Edit...`
+    - Wähle den Eintrag `JavaFX [JavaFX SDK Version] – <.jar-Datei> – Source attachment: (None)` aus und betätige die Drucktaste `Edit...`
     - Wähle die Option `External location` aus
     - Gib beim Feld `Path` den Wert `C:\Progam Files\Java\javafx-sdk-[JavaFX SDK Version]\lib\src.zip` ein und betätige die Drucktaste `OK`
-    - Wähle den Eintrag `JavaFX [JavaFX SDK Version] – \<.jar-Datei\> – Javadoc location: (None)` aus und betätige die Drucktaste `Edit...`
+    - Wähle den Eintrag `JavaFX [JavaFX SDK Version] – <.jar-Datei> – Javadoc location: (None)` aus und betätige die Drucktaste `Edit...`
     - Wähle die Option `Javadoc URL` aus
     - Gib beim Feld `Javadoc location path` den Wert `https://openjfx.io/javadoc/[JavaFX SDK Version]/` ein und betätige die Drucktaste `OK`
 - Betätige die Drucktaste `Apply and Close`
-- Navigiere im Package Explorer zum Projekt `java_apps` und wähle dieses aus
-- Navigiere zu `Project - Properties - Java Build Path`
 
 
 ## Verknüpfe den Scene Builder mit Eclipse
@@ -42,12 +40,18 @@
 - Starte die Kommandozeile (z.B. Windows PowerShell)
 - Führe den Befehl `git clone https://github.com/appenmaier/java_apps "[Pfad/Der Name Deines lokalen Repositorys]"` aus, um das remote Repository zu klonen
 
-## Binde das lokale Repository in Eclipse ein
+## Binde das lokale Repository in Eclipse ein und bin die JavaFX User Library ein
 
 - Starte Eclipse
 - Führe die Funktion `File - Import... - General - Projects from Folder or Archive` aus und betätige die Drucktaste `Next >`
 - Gib nachfolgende Informationen ein und betätige die Drucktaste `Finish`
   - Import source: `[Pfad/Der Name Deines lokalen Repositorys]`
+- Navigiere im Package Explorer zum Projekt `java_apps` und wähle dieses aus
+- Navigiere zu `Project - Properties - Java Build Path` und wähle den Reiter `Libraries` aus
+- Wähle die Option `Classpath` aus und betätige die Drucktaste `Add Library...`
+- Wähle die Option `User Library` aus und betätige die Drucktaste `Next >`
+- Wähle die Option `JavaFX [JavaFX Version]` aus und betätige die Drucktase `Finish`
+- Betätige die Drucktaste `Apply and Close`
 
 ## Aktualisiere das lokale Repository
 
