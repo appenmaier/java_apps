@@ -1,5 +1,10 @@
 # Arbeiten mit diesem Repository
 
+## Weiterführende Links
+
+- [Getting Started with JavaFX](https://openjfx.io/openjfx-docs/#introduction)
+- [Working with JavaFX UI Components](https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm#JFXUI336)
+
 ## Vorbereitungen
 
 - Installiere ein [JDK](https://www.oracle.com/java/technologies/downloads/#jdk21-windows)
