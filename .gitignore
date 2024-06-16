@@ -7,7 +7,11 @@
 # Do not ignore Java Source Code Files
 !*.java
 
-# Do not ignore Text Files, CSV Files, Image Files and FXMl files
+# Do not ignore Markdown Files
+!*.md
+!*.mdx
+
+# Do not ignore Text Files, CSV Files, Image Files and FXML files
 !*.txt
 !*.csv
 !*.png
