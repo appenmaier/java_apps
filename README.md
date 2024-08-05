@@ -33,7 +33,6 @@
     - Gib beim Feld `Javadoc location path` den Wert `https://openjfx.io/javadoc/[JavaFX SDK Version]/` ein und betätige die Drucktaste `OK`
 - Betätige die Drucktaste `Apply and Close`
 
-
 ## Verknüpfe den Scene Builder mit Eclipse
 
 - Starte Eclipse
