@@ -1,21 +1,17 @@
-# Ignore Everything
+# Ignore all
 *
 
-# Do not ignore .gitignore
+# Do not ignore Java relevant files
 !.gitignore
-
-# Do not ignore Java Source Code Files
 !*.java
-
-# Do not ignore Markdown Files
 !*.md
-!*.mdx
-
-# Do not ignore Text Files, CSV Files, Image Files and FXML files
 !*.txt
 !*.csv
 !*.png
+!*.xml
 !*.fxml
-
 !*/
+
+# Ignore not relevant folders
 /bin/
+/target/
