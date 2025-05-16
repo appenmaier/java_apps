@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="edu.jappuccini.apps.balls.Controller">
+	<children>
+		<Canvas fx:id="canvas" height="750.0" width="750.0" />
+	</children>
+</VBox>

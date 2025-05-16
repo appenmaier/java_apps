@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import edu.jappuccini.apps.chess.ChessBoard?>
+
+<ChessBoard fx:id="board" prefHeight="530.0"
+	prefWidth="530.0" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="edu.jappuccini.apps.chess.Controller">
+	<padding>
+		<Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+	</padding>
+</ChessBoard>
