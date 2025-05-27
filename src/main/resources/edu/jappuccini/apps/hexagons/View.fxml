@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="edu.jappuccini.apps.hexagons.Controller">
+	<children>
+		<Pane fx:id="grid">
+		</Pane>
+		<GridPane>
+			<children>
+				<Label text="Aktueller Spieler: ">
+					<font>
+						<Font size="24.0" />
+					</font>
+				</Label>
+				<Label fx:id="currentPlayerText" minWidth="25.0"
+					GridPane.columnIndex="1">
+					<font>
+						<Font size="24.0" />
+					</font>
+				</Label>
+				<Label text="Punktzahl Spieler 1: " GridPane.rowIndex="1" />
+				<Label fx:id="points1Text" minWidth="25.0"
+					GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<Label text="Punktzahl Spieler 2: " GridPane.rowIndex="2" />
+				<Label fx:id="points2Text" minWidth="25.0"
+					GridPane.columnIndex="1" GridPane.rowIndex="2" />
+			</children>
+		</GridPane>
+	</children>
+	<padding>
+		<Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+	</padding>
+</HBox>
