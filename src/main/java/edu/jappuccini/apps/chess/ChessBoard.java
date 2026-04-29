@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
+/** 8×8 chess board that initialises all fields and places the starting pieces. */
 public class ChessBoard extends GridPane {
 
    private final Field[][] fields;
@@ -30,12 +31,12 @@ public class ChessBoard extends GridPane {
       fields[2][0].setFigure(new ChessFigure(ChessFigureType.BISHOP,
             ChessColor.WHITE,
             new Image(getClass().getResourceAsStream("bishop_white.png"))));
-      fields[3][0].setFigure(new ChessFigure(ChessFigureType.KING,
-            ChessColor.WHITE,
-            new Image(getClass().getResourceAsStream("king_white.png"))));
-      fields[4][0].setFigure(new ChessFigure(ChessFigureType.QUEEN,
+      fields[3][0].setFigure(new ChessFigure(ChessFigureType.QUEEN,
             ChessColor.WHITE,
             new Image(getClass().getResourceAsStream("queen_white.png"))));
+      fields[4][0].setFigure(new ChessFigure(ChessFigureType.KING,
+            ChessColor.WHITE,
+            new Image(getClass().getResourceAsStream("king_white.png"))));
       fields[5][0].setFigure(new ChessFigure(ChessFigureType.BISHOP,
             ChessColor.WHITE,
             new Image(getClass().getResourceAsStream("bishop_white.png"))));
@@ -60,12 +61,12 @@ public class ChessBoard extends GridPane {
       fields[2][7].setFigure(new ChessFigure(ChessFigureType.BISHOP,
             ChessColor.BLACK,
             new Image(getClass().getResourceAsStream("bishop_black.png"))));
-      fields[3][7].setFigure(new ChessFigure(ChessFigureType.KING,
-            ChessColor.BLACK,
-            new Image(getClass().getResourceAsStream("king_black.png"))));
-      fields[4][7].setFigure(new ChessFigure(ChessFigureType.QUEEN,
+      fields[3][7].setFigure(new ChessFigure(ChessFigureType.QUEEN,
             ChessColor.BLACK,
             new Image(getClass().getResourceAsStream("queen_black.png"))));
+      fields[4][7].setFigure(new ChessFigure(ChessFigureType.KING,
+            ChessColor.BLACK,
+            new Image(getClass().getResourceAsStream("king_black.png"))));
       fields[5][7].setFigure(new ChessFigure(ChessFigureType.BISHOP,
             ChessColor.BLACK,
             new Image(getClass().getResourceAsStream("bishop_black.png"))));
@@ -83,6 +84,7 @@ public class ChessBoard extends GridPane {
 
    }
 
+   /** Returns the 8×8 array of fields that make up the board. */
    public Field[][] getFields() {
       return fields;
    }

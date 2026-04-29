@@ -1,27 +1,24 @@
 package edu.jappuccini.apps.dice;
 
-import java.io.IOException;
-
+import edu.jappuccini.apps.BaseApp;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-public class App extends Application {
+/** Entry point for the Dice application. */
+public class App extends BaseApp {
 
+   /** Launches the Dice JavaFX application. */
    public static void main(String[] args) {
-      launch(args);
+      Application.launch(App.class, args);
    }
 
    @Override
-   public void start(Stage primaryStage) throws IOException {
-      Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
-      Scene scene = new Scene(root);
-      primaryStage.setTitle("Würfel");
-      primaryStage.setScene(scene);
-      primaryStage.setResizable(false);
-      primaryStage.show();
+   protected String getTitle() {
+      return "Würfel";
+   }
+
+   @Override
+   protected String getFxmlName() {
+      return "View.fxml";
    }
 
 }

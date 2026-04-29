@@ -1,5 +1,9 @@
 package edu.jappuccini.apps.login;
 
+import lombok.Getter;
+
+/** Represents a user account with credentials and personal name information. */
+@Getter
 public class User {
 
    private final String userName;
@@ -12,22 +16,6 @@ public class User {
       this.password = password;
       this.firstName = firstName;
       this.familyName = familyName;
-   }
-
-   public String getUserName() {
-      return userName;
-   }
-
-   public String getPassword() {
-      return password;
-   }
-
-   public String getFirstName() {
-      return firstName;
-   }
-
-   public String getFamilyName() {
-      return familyName;
    }
 
 }

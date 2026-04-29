@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
+/** Controller for the user view; displays a personalised greeting for the logged-in user. */
 public class UserController implements Initializable {
 
    @FXML

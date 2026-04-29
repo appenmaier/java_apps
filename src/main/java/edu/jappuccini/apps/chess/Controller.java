@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.input.MouseEvent;
 
+/** Controller for the Chess application; handles piece selection and movement. */
 public class Controller implements Initializable {
 
    @FXML
@@ -24,6 +25,7 @@ public class Controller implements Initializable {
       }
    }
 
+   /** Event handler that manages piece selection, moves, and captures on click. */
    private class FieldClickedEventHandler implements EventHandler<MouseEvent> {
 
       @Override
@@ -31,8 +33,8 @@ public class Controller implements Initializable {
          Field newField = (Field) event.getSource();
          ChessFigure oldFigure = oldField == null ? null : oldField.getFigure();
          ChessFigure newFigure = newField.getFigure();
-         boolean oldFieldIsNull = oldField == null ? true : false;
-         boolean newFieldIsEmpty = newField.getFigure() == null ? true : false;
+         boolean oldFieldIsNull = oldField == null;
+         boolean newFieldIsEmpty = newField.getFigure() == null;
 
          if (oldFieldIsNull && !newFieldIsEmpty) {
             setHighlight(newField, true);
@@ -43,6 +45,14 @@ public class Controller implements Initializable {
          if (!oldFieldIsNull && oldField == newField) {
             setHighlight(newField, false);
             oldField = null;
+            return;
+         }
+
+         if (!oldFieldIsNull && !newFieldIsEmpty
+               && newFigure.getColor().equals(oldFigure.getColor())) {
+            setHighlight(oldField, false);
+            setHighlight(newField, true);
+            oldField = newField;
             return;
          }
 
@@ -69,6 +79,12 @@ public class Controller implements Initializable {
 
    }
 
+   /**
+    * Applies or removes a brightness highlight on the given field.
+    *
+    * @param field     the field to highlight
+    * @param highlight {@code true} to highlight, {@code false} to clear
+    */
    private void setHighlight(Field field, boolean highlight) {
       if (highlight) {
          field.getBackgroundLayer().setEffect(new ColorAdjust(0, 0, 0.5, 0));

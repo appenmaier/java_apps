@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 
+/** Controller for the Hexagons application; manages a two-player turn-based grid game. */
 public class Controller {
 
    private static final int GRID_SIZE = 5;
@@ -32,6 +33,11 @@ public class Controller {
 
    @FXML
    public void initialize() {
+      resetGame();
+   }
+
+   /** Resets all game state and rebuilds the hexagon grid. */
+   private void resetGame() {
       /* Initialize Attributes */
       hexagonFields = new ArrayList<>();
       rounds = 0;
@@ -41,6 +47,9 @@ public class Controller {
       currentPlayerText.setText(currentPlayer == 1 ? "1" : "2");
       points1Text.setText("0");
       points2Text.setText("0");
+
+      /* Clear existing grid */
+      grid.getChildren().clear();
 
       /* Calculate Hexagon Size */
       Screen primaryScreen = Screen.getPrimary();
@@ -71,6 +80,10 @@ public class Controller {
       }
    }
 
+   /**
+    * Handles a click on a hexagon tile: flips it, awards points to the current player,
+    * switches turns, and shows a game-over dialog when all tiles are revealed.
+    */
    private void handleHexagonFieldClick(int row, int column) {
       /* Get Hexagon */
       int index = row * GRID_SIZE + column;
@@ -111,7 +124,7 @@ public class Controller {
          alert.setContentText(text);
          alert.showAndWait();
 
-         initialize();
+         resetGame();
          return;
       }
 

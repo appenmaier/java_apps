@@ -3,6 +3,7 @@ package edu.jappuccini.apps.chess;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/** Represents a chess piece as an {@link ImageView} with type and color information. */
 public class ChessFigure extends ImageView {
 
    private final ChessColor color;
@@ -15,10 +16,12 @@ public class ChessFigure extends ImageView {
       super.setImage(image);
    }
 
+   /** Returns the color of this chess piece. */
    public ChessColor getColor() {
       return color;
    }
 
+   /** Returns the type of this chess piece. */
    public ChessFigureType getType() {
       return type;
    }

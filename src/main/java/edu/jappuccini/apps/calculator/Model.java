@@ -1,21 +1,28 @@
 package edu.jappuccini.apps.calculator;
 
+/** Singleton model that parses and evaluates arithmetic expressions for the Calculator app. */
 public class Model {
 
    private Calculator calculator;
-   private static Model instance;
+   private static final Model INSTANCE = new Model();
 
    private Model() {
       calculator = new Calculator();
    }
 
+   /** Returns the singleton instance of this model. */
    public static Model getInstance() {
-      if (instance == null) {
-         instance = new Model();
-      }
-      return instance;
+      return INSTANCE;
    }
 
+   /**
+    * Parses and evaluates an arithmetic expression of the form {@code "number operator number"}.
+    *
+    * @param input the expression string entered by the user
+    * @return the result formatted with two decimal places
+    * @throws InvalidInputException if the input is null, malformed, uses an unsupported operator,
+    *                               or attempts division by zero
+    */
    public String calculate(String input) throws InvalidInputException {
       if (input == null) {
          throw new InvalidInputException();
@@ -39,12 +46,16 @@ public class Model {
          throw new InvalidInputException();
       }
 
+      if (operator == '/' && b == 0) {
+         throw new InvalidInputException();
+      }
+
       return String.format("%.2f", switch (operator) {
          case '+' -> calculator.add(a, b);
          case '-' -> calculator.subtract(a, b);
          case '*' -> calculator.multiply(a, b);
          case '/' -> calculator.divide(a, b);
-         default  -> "";
+         default  -> throw new AssertionError("Unexpected operator: " + operator);
       });
    }
 

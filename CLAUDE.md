@@ -1,17 +1,10 @@
-# Sample Solutions — JavaFX Exercises
+# CLAUDE.md
 
-This repository contains sample solutions for the JavaFX exercises from [Programmieren mit Java](https://jappuccini.github.io/java-docs/production/).
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Tech Stack
+## About
 
-| Technology | Version |
-|------------|---------|
-| Java | 21 |
-| JavaFX (Controls + FXML) | 23.0.1 |
-| Lombok | 1.18.36 |
-| JUnit 5 | 5.11.3 |
-| Mockito | 5.14.2 |
-| Maven | – |
+Sample solutions for JavaFX exercises from [Programmieren mit Java](https://jappuccini.github.io/java-docs/production/). Each app is a standalone JavaFX GUI application.
 
 ## Build & Run
 
@@ -26,7 +19,9 @@ mvn test
 mvn clean package
 ```
 
-Apps are launched directly from the IDE (Eclipse: right-click `MainClass.java` → *Run As* → *Java Application*).
+There is no Maven exec plugin configured — run apps from the IDE (Eclipse: right-click `MainClass.java` → Run As → Java Application).
+
+**Stack:** Java 21, JavaFX 23.0.1 (controls + FXML), Lombok 1.18.36, JUnit 5.11.3, Mockito 5.14.2
 
 ## Architecture
 
@@ -34,12 +29,14 @@ Each app under `src/main/java/edu/jappuccini/apps/<appname>/` follows the same M
 
 | File | Role |
 |------|------|
-| `App.java` | Entry point, extends `BaseApp` — implements `getTitle()` and `getFxmlName()` |
-| `<Name>Controller.java` | Implements `Initializable` — `@FXML` fields and event handlers |
-| `Model.java` | Business logic, singleton via `getInstance()` |
-| `<Name>View.fxml` | UI definition under `src/main/resources/.../` |
+| `App.java` | Entry point + extends `BaseApp` — implements `getTitle()` and `getFxmlName()` |
+| `<Name>Controller.java` | Implements `Initializable` — `@FXML` fields, event handlers |
+| `Model.java` | Business logic, singleton via `getInstance()` (eager initialization: `INSTANCE = new Model()`) |
+| `<Name>View.fxml` | UI definition in `src/main/resources/.../` mirroring the Java package path |
 
-`BaseApp` handles FXML loading, `Scene`/`Stage` setup, and `setResizable(false)` for all apps.
+`BaseApp` (`src/main/java/edu/jappuccini/apps/BaseApp.java`) is the shared base class that handles FXML loading, Scene/Stage setup, and `setResizable(false)` for all apps.
+
+Apps with more complexity (e.g. `chess`, `login`) add domain model classes (e.g. `ChessFigure`, `User`) and extra controllers/views alongside this base structure.
 
 ## Apps
 

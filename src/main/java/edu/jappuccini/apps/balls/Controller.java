@@ -13,7 +13,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
+/** Controller for the Balls application; manages the animation loop and mouse interaction. */
 public class Controller implements Initializable {
+
+   private static final Random RANDOM = new Random();
 
    @FXML
    private Canvas canvas;
@@ -29,6 +32,7 @@ public class Controller implements Initializable {
       timer.start();
    }
 
+   /** AnimationTimer that redraws and moves all balls every frame. */
    private class BallsAnimationTimer extends AnimationTimer {
 
       @Override
@@ -45,20 +49,20 @@ public class Controller implements Initializable {
 
    }
 
+   /** Event handler that creates a new random ball at the clicked canvas position. */
    private class CanvasClickedEventHandler implements EventHandler<MouseEvent> {
 
       @Override
       public void handle(MouseEvent event) {
-         Random random = new Random();
-         int r = random.nextInt(25, 50);
-         int x = (int) event.getX();
-         int y = (int) event.getY();
-         double red = random.nextDouble(1);
-         double green = random.nextDouble(1);
-         double blue = random.nextDouble(1);
-         double opacity = random.nextDouble(0.5, 1);
-         int speedX = random.nextInt(5, 15);
-         int speedY = random.nextInt(5, 15);
+         int r = RANDOM.nextInt(25, 50);
+         int x = Math.clamp((int) event.getX(), 0, (int) canvas.getWidth() - 2 * r);
+         int y = Math.clamp((int) event.getY(), 0, (int) canvas.getHeight() - 2 * r);
+         double red = RANDOM.nextDouble(1);
+         double green = RANDOM.nextDouble(1);
+         double blue = RANDOM.nextDouble(1);
+         double opacity = RANDOM.nextDouble(0.5, 1);
+         int speedX = RANDOM.nextInt(5, 15) * (RANDOM.nextBoolean() ? 1 : -1);
+         int speedY = RANDOM.nextInt(5, 15) * (RANDOM.nextBoolean() ? 1 : -1);
          Color color = new Color(red, green, blue, opacity);
          model.addBall(new Ball(r, x, y, color, speedX, speedY));
       }

@@ -4,6 +4,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/** A single square on the chess board, identified by column letter and row number. */
 public class Field extends StackPane {
 
    private final int row;
@@ -19,17 +20,24 @@ public class Field extends StackPane {
       getChildren().add(backgroundLayer);
    }
 
+   /** Returns {@code true} if this field is currently highlighted as selected. */
    public boolean isSelected() {
       return isSelected;
    }
 
+   /** Sets the selection state of this field. */
    public void setSelected(boolean isSelected) {
       this.isSelected = isSelected;
    }
 
+   /**
+    * Places the given figure on this field, or removes the current figure when {@code null}.
+    */
    public void setFigure(ChessFigure figure) {
       if (figure == null) {
-         getChildren().remove(1);
+         if (getChildren().size() > 1) {
+            getChildren().remove(1);
+         }
       } else if (getChildren().size() == 2) {
          getChildren().set(1, figure);
       } else {
@@ -37,18 +45,22 @@ public class Field extends StackPane {
       }
    }
 
+   /** Returns the figure on this field, or {@code null} if the field is empty. */
    public ChessFigure getFigure() {
       return getChildren().size() == 2 ? (ChessFigure) getChildren().get(1) : null;
    }
 
+   /** Returns the background rectangle that represents the field color. */
    public Rectangle getBackgroundLayer() {
       return (Rectangle) getChildren().get(0);
    }
 
+   /** Returns the row number (1–8) of this field. */
    public int getRow() {
       return row;
    }
 
+   /** Returns the column letter (A–H) of this field. */
    public char getColumn() {
       return column;
    }

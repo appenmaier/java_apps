@@ -16,6 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/** Controller for the login screen; authenticates the user and switches to the user view. */
 public class LoginController implements Initializable {
 
    @FXML
@@ -29,18 +30,21 @@ public class LoginController implements Initializable {
       model = Model.getInstance();
    }
 
+   /**
+    * Validates the credentials and navigates to the user view on success,
+    * or shows an error alert on failure.
+    */
    @FXML
    public void login(ActionEvent actionEvent) throws IOException {
       String userName = userNameTextField.getText();
       String password = passwordPasswordField.getText();
 
-      if (userName.equals("") || password.equals("")) {
+      if (userName.isEmpty() || password.isEmpty()) {
          Alert alert = new Alert(AlertType.ERROR, "Fehlende Anmeldedaten");
          alert.show();
          return;
       }
 
-      model = Model.getInstance();
       if (!model.setUser(userName, password)) {
          Alert alert = new Alert(AlertType.ERROR, "Fehlerhafte Anmeldedaten");
          alert.show();

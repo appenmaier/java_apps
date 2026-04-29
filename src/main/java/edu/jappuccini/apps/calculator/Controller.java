@@ -11,6 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/** Controller for the Calculator application; handles user input and displays results. */
 public class Controller implements Initializable {
 
    @FXML
@@ -24,6 +25,7 @@ public class Controller implements Initializable {
       model = Model.getInstance();
    }
 
+   /** Reads the input field, evaluates the expression, and shows the result or an error alert. */
    @FXML
    public void calculate(ActionEvent actionEvent) {
       String input = inputTextField.getText();

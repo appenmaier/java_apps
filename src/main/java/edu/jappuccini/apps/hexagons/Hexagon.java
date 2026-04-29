@@ -7,9 +7,11 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import lombok.Getter;
 
+/** Represents a single hexagon tile with a polygon shape and a hidden point value. */
 @Getter
 public class Hexagon {
 
+   private static final Random RANDOM = new Random();
    private static final int BASE_VALUE = 5;
    private static final Color BASE_COLOR = Color.DARKGREY;
    private static final Color STROKE_COLOR = Color.GREY;
@@ -19,6 +21,13 @@ public class Hexagon {
    private Text value;
    private boolean isFlipped;
 
+   /**
+    * Creates a hexagon tile centered at ({@code x}, {@code y}) with the given {@code size}.
+    *
+    * @param size radius of the hexagon
+    * @param x    center x coordinate
+    * @param y    center y coordinate
+    */
    public Hexagon(double size, double x, double y) {
       /* Create Hexagon */
       hexagon = new Polygon();
@@ -44,22 +53,25 @@ public class Hexagon {
       hexagon.setStroke(STROKE_COLOR);
    }
 
+   /**
+    * Reveals the hexagon by assigning a random point value and changing its color
+    * to green for positive values or red for negative values.
+    */
    public void flip() {
       /* Set Flipped */
       isFlipped = true;
 
       /* Set Value */
-      Random random = new Random();
       int tmp;
-      if (random.nextInt(1, 4) >= 2) {
-         tmp = BASE_VALUE * random.nextInt(1, 6);
+      if (RANDOM.nextInt(1, 4) >= 2) {
+         tmp = BASE_VALUE * RANDOM.nextInt(1, 6);
       } else {
-         tmp = BASE_VALUE * -1 * random.nextInt(1, 4);
+         tmp = BASE_VALUE * -1 * RANDOM.nextInt(1, 4);
       }
       value.setText(String.valueOf(tmp));
 
       /* Change Hexagon Color */
-      if (Integer.valueOf(value.getText()) > 0) {
+      if (tmp > 0) {
          hexagon.setFill(POSITIVE_COLOR);
       } else {
          hexagon.setFill(NEGATIVE_COLOR);

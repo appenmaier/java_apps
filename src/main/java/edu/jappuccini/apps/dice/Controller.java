@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/** Controller for the Dice application; shows a dice face and re-rolls on button click. */
 public class Controller implements Initializable {
 
    @FXML
@@ -24,6 +25,7 @@ public class Controller implements Initializable {
       diceImageView.setImage(diceImage);
    }
 
+   /** Rolls the die and updates the displayed image. */
    @FXML
    public void rollTheDice(ActionEvent actionEvent) {
       model.rollTheDice();

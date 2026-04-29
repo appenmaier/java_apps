@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+/** Controller for the LED application; drives the animation and handles button actions. */
 public class Controller implements Initializable {
 
    @FXML
@@ -30,21 +31,25 @@ public class Controller implements Initializable {
       timer.start();
    }
 
+   /** Switches the LED on. */
    @FXML
    public void switchOn(ActionEvent actionEvent) {
       model.getLED().switchOn();
    }
 
+   /** Switches the LED off. */
    @FXML
    public void switchOff(ActionEvent actionEvent) {
       model.getLED().switchOff();
    }
 
+   /** Cycles the LED to the next color. */
    @FXML
    public void switchColor(ActionEvent actionEvent) {
       model.getLED().switchColor();
    }
 
+   /** AnimationTimer that updates the concentric circle layers to reflect the LED state every frame. */
    private class LEDAnimationTimer extends AnimationTimer {
 
       @Override

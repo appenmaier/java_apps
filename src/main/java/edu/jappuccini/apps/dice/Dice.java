@@ -3,8 +3,13 @@ package edu.jappuccini.apps.dice;
 import java.util.Random;
 
 import javafx.scene.image.Image;
+import lombok.Getter;
 
+/** Represents a six-sided die that stores its current value and the corresponding image. */
+@Getter
 public class Dice {
+
+   private static final Random RANDOM = new Random();
 
    private int value;
    private Image image;
@@ -13,9 +18,9 @@ public class Dice {
       rollTheDice();
    }
 
+   /** Generates a random value between 1 and 6 and loads the matching face image. */
    public void rollTheDice() {
-      Random random = new Random();
-      value = random.nextInt(1, 7);
+      value = RANDOM.nextInt(1, 7);
       switch (value) {
          case 1:
             image = new Image(getClass().getResourceAsStream("one.png"));
@@ -36,14 +41,6 @@ public class Dice {
             image = new Image(getClass().getResourceAsStream("six.png"));
             break;
       }
-   }
-
-   public int getValue() {
-      return value;
-   }
-
-   public Image getImage() {
-      return image;
    }
 
 }

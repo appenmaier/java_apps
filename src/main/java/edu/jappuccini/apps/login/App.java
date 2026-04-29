@@ -1,27 +1,24 @@
 package edu.jappuccini.apps.login;
 
-import java.io.IOException;
-
+import edu.jappuccini.apps.BaseApp;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-public class App extends Application {
+/** Entry point for the Login application. */
+public class App extends BaseApp {
 
+   /** Launches the Login JavaFX application. */
    public static void main(String[] args) {
-      launch(args);
+      Application.launch(App.class, args);
    }
 
    @Override
-   public void start(Stage primaryStage) throws IOException {
-      Parent root = FXMLLoader.load(getClass().getResource("LoginView.fxml"));
-      Scene scene = new Scene(root);
-      primaryStage.setTitle("Login");
-      primaryStage.setScene(scene);
-      primaryStage.setResizable(false);
-      primaryStage.show();
+   protected String getTitle() {
+      return "Login";
+   }
+
+   @Override
+   protected String getFxmlName() {
+      return "LoginView.fxml";
    }
 
 }

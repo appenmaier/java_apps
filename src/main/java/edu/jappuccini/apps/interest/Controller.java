@@ -11,6 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/** Controller for the Interest Calculator application; reads inputs and displays the result. */
 public class Controller implements Initializable {
 
    @FXML
@@ -28,6 +29,7 @@ public class Controller implements Initializable {
       model = Model.getInstance();
    }
 
+   /** Validates the input fields and displays the calculated compound interest. */
    @FXML
    public void calculateInterest(ActionEvent actionEvent) {
       double initialCapital = 0;

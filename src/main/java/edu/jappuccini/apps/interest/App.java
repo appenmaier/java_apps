@@ -1,25 +1,24 @@
 package edu.jappuccini.apps.interest;
 
+import edu.jappuccini.apps.BaseApp;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-public class App extends Application {
+/** Entry point for the Interest Calculator application. */
+public class App extends BaseApp {
 
+   /** Launches the Interest Calculator JavaFX application. */
    public static void main(String[] args) {
-      launch(args);
+      Application.launch(App.class, args);
    }
 
    @Override
-   public void start(Stage primaryStage) throws Exception {
-      Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
-      Scene scene = new Scene(root);
-      primaryStage.setTitle("Zinsrechner");
-      primaryStage.setScene(scene);
-      primaryStage.setResizable(false);
-      primaryStage.show();
+   protected String getTitle() {
+      return "Zinsrechner";
+   }
+
+   @Override
+   protected String getFxmlName() {
+      return "View.fxml";
    }
 
 }

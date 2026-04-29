@@ -1,5 +1,6 @@
 package edu.jappuccini.apps.chess;
 
+/** Represents the color of a chess piece (black or white). */
 public enum ChessColor {
 
    BLACK("schwarz"), WHITE("weiss");
@@ -10,6 +11,7 @@ public enum ChessColor {
       this.description = description;
    }
 
+   /** Returns the German description of this color. */
    public String getDescription() {
       return description;
    }
