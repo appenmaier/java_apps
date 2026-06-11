@@ -1,5 +1,7 @@
 package edu.jappuccini.apps.dice;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Random;
 
 import javafx.scene.image.Image;
@@ -21,25 +23,23 @@ public class Dice {
    /** Generates a random value between 1 and 6 and loads the matching face image. */
    public void rollTheDice() {
       value = RANDOM.nextInt(1, 7);
-      switch (value) {
-         case 1:
-            image = new Image(getClass().getResourceAsStream("one.png"));
-            break;
-         case 2:
-            image = new Image(getClass().getResourceAsStream("two.png"));
-            break;
-         case 3:
-            image = new Image(getClass().getResourceAsStream("three.png"));
-            break;
-         case 4:
-            image = new Image(getClass().getResourceAsStream("four.png"));
-            break;
-         case 5:
-            image = new Image(getClass().getResourceAsStream("five.png"));
-            break;
-         case 6:
-            image = new Image(getClass().getResourceAsStream("six.png"));
-            break;
+      String fileName = switch (value) {
+         case 1 -> "one.png";
+         case 2 -> "two.png";
+         case 3 -> "three.png";
+         case 4 -> "four.png";
+         case 5 -> "five.png";
+         case 6 -> "six.png";
+         default -> throw new AssertionError("Ungültiger Würfelwert: " + value);
+      };
+      image = loadImage(fileName);
+   }
+
+   private Image loadImage(String name) {
+      try (InputStream is = getClass().getResourceAsStream(name)) {
+         return new Image(is);
+      } catch (IOException e) {
+         throw new RuntimeException("Bilddatei nicht gefunden: " + name, e);
       }
    }
 

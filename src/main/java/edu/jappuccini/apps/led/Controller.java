@@ -8,6 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 
 /** Controller for the LED application; drives the animation and handles button actions. */
@@ -49,7 +52,9 @@ public class Controller implements Initializable {
       model.getLED().switchColor();
    }
 
-   /** AnimationTimer that updates the concentric circle layers to reflect the LED state every frame. */
+   /**
+    * AnimationTimer that updates the concentric circle layers to reflect the LED state every frame.
+    */
    private class LEDAnimationTimer extends AnimationTimer {
 
       @Override
@@ -57,14 +62,27 @@ public class Controller implements Initializable {
          Color color = model.getLED().getColor();
          layer1.setFill(color);
          if (model.getLED().isShining()) {
-            layer2.setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 0.75));
-            layer3.setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 0.5));
-            layer4.setFill(new Color(color.getRed(), color.getGreen(), color.getBlue(), 0.25));
+            layer2.setFill(radialGlow(color, 0.75));
+            layer3.setFill(radialGlow(color, 0.5));
+            layer4.setFill(radialGlow(color, 0.25));
          } else {
             layer2.setFill(Color.TRANSPARENT);
             layer3.setFill(Color.TRANSPARENT);
             layer4.setFill(Color.TRANSPARENT);
          }
+      }
+
+      private RadialGradient radialGlow(Color color, double maxOpacity) {
+         return new RadialGradient(0,
+               0,
+               0.5,
+               0.5,
+               0.5,
+               true,
+               CycleMethod.NO_CYCLE,
+               new Stop(0,
+                     new Color(color.getRed(), color.getGreen(), color.getBlue(), maxOpacity)),
+               new Stop(1, Color.TRANSPARENT));
       }
 
    }

@@ -41,6 +41,9 @@ public class Model {
          throw new InvalidInputException();
       }
 
+      if (tokens[1].isEmpty()) {
+         throw new InvalidInputException();
+      }
       char operator = tokens[1].charAt(0);
       if (operator != '+' && operator != '-' && operator != '*' && operator != '/') {
          throw new InvalidInputException();

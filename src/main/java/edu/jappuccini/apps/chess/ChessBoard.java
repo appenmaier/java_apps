@@ -1,5 +1,7 @@
 package edu.jappuccini.apps.chess;
 
+import java.io.IOException;
+import java.io.InputStream;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -22,66 +24,56 @@ public class ChessBoard extends GridPane {
          }
       }
 
-      fields[0][0].setFigure(new ChessFigure(ChessFigureType.ROOK,
-            ChessColor.WHITE,
-            new Image(getClass().getResourceAsStream("rook_white.png"))));
-      fields[1][0].setFigure(new ChessFigure(ChessFigureType.KNIGHT,
-            ChessColor.WHITE,
-            new Image(getClass().getResourceAsStream("knight_white.png"))));
-      fields[2][0].setFigure(new ChessFigure(ChessFigureType.BISHOP,
-            ChessColor.WHITE,
-            new Image(getClass().getResourceAsStream("bishop_white.png"))));
-      fields[3][0].setFigure(new ChessFigure(ChessFigureType.QUEEN,
-            ChessColor.WHITE,
-            new Image(getClass().getResourceAsStream("queen_white.png"))));
-      fields[4][0].setFigure(new ChessFigure(ChessFigureType.KING,
-            ChessColor.WHITE,
-            new Image(getClass().getResourceAsStream("king_white.png"))));
-      fields[5][0].setFigure(new ChessFigure(ChessFigureType.BISHOP,
-            ChessColor.WHITE,
-            new Image(getClass().getResourceAsStream("bishop_white.png"))));
-      fields[6][0].setFigure(new ChessFigure(ChessFigureType.KNIGHT,
-            ChessColor.WHITE,
-            new Image(getClass().getResourceAsStream("knight_white.png"))));
-      fields[7][0].setFigure(new ChessFigure(ChessFigureType.ROOK,
-            ChessColor.WHITE,
-            new Image(getClass().getResourceAsStream("rook_white.png"))));
-      for (int i = 0; i < 8; i++) {
-         fields[i][1].setFigure(new ChessFigure(ChessFigureType.PAWN,
-               ChessColor.WHITE,
-               new Image(getClass().getResourceAsStream("pawn_white.png"))));
-      }
-
       fields[0][7].setFigure(new ChessFigure(ChessFigureType.ROOK,
-            ChessColor.BLACK,
-            new Image(getClass().getResourceAsStream("rook_black.png"))));
+            ChessColor.WHITE, loadImage("rook_white.png")));
       fields[1][7].setFigure(new ChessFigure(ChessFigureType.KNIGHT,
-            ChessColor.BLACK,
-            new Image(getClass().getResourceAsStream("knight_black.png"))));
+            ChessColor.WHITE, loadImage("knight_white.png")));
       fields[2][7].setFigure(new ChessFigure(ChessFigureType.BISHOP,
-            ChessColor.BLACK,
-            new Image(getClass().getResourceAsStream("bishop_black.png"))));
+            ChessColor.WHITE, loadImage("bishop_white.png")));
       fields[3][7].setFigure(new ChessFigure(ChessFigureType.QUEEN,
-            ChessColor.BLACK,
-            new Image(getClass().getResourceAsStream("queen_black.png"))));
+            ChessColor.WHITE, loadImage("queen_white.png")));
       fields[4][7].setFigure(new ChessFigure(ChessFigureType.KING,
-            ChessColor.BLACK,
-            new Image(getClass().getResourceAsStream("king_black.png"))));
+            ChessColor.WHITE, loadImage("king_white.png")));
       fields[5][7].setFigure(new ChessFigure(ChessFigureType.BISHOP,
-            ChessColor.BLACK,
-            new Image(getClass().getResourceAsStream("bishop_black.png"))));
+            ChessColor.WHITE, loadImage("bishop_white.png")));
       fields[6][7].setFigure(new ChessFigure(ChessFigureType.KNIGHT,
-            ChessColor.BLACK,
-            new Image(getClass().getResourceAsStream("knight_black.png"))));
+            ChessColor.WHITE, loadImage("knight_white.png")));
       fields[7][7].setFigure(new ChessFigure(ChessFigureType.ROOK,
-            ChessColor.BLACK,
-            new Image(getClass().getResourceAsStream("rook_black.png"))));
+            ChessColor.WHITE, loadImage("rook_white.png")));
       for (int i = 0; i < 8; i++) {
          fields[i][6].setFigure(new ChessFigure(ChessFigureType.PAWN,
-               ChessColor.BLACK,
-               new Image(getClass().getResourceAsStream("pawn_black.png"))));
+               ChessColor.WHITE, loadImage("pawn_white.png")));
       }
 
+      fields[0][0].setFigure(new ChessFigure(ChessFigureType.ROOK,
+            ChessColor.BLACK, loadImage("rook_black.png")));
+      fields[1][0].setFigure(new ChessFigure(ChessFigureType.KNIGHT,
+            ChessColor.BLACK, loadImage("knight_black.png")));
+      fields[2][0].setFigure(new ChessFigure(ChessFigureType.BISHOP,
+            ChessColor.BLACK, loadImage("bishop_black.png")));
+      fields[3][0].setFigure(new ChessFigure(ChessFigureType.QUEEN,
+            ChessColor.BLACK, loadImage("queen_black.png")));
+      fields[4][0].setFigure(new ChessFigure(ChessFigureType.KING,
+            ChessColor.BLACK, loadImage("king_black.png")));
+      fields[5][0].setFigure(new ChessFigure(ChessFigureType.BISHOP,
+            ChessColor.BLACK, loadImage("bishop_black.png")));
+      fields[6][0].setFigure(new ChessFigure(ChessFigureType.KNIGHT,
+            ChessColor.BLACK, loadImage("knight_black.png")));
+      fields[7][0].setFigure(new ChessFigure(ChessFigureType.ROOK,
+            ChessColor.BLACK, loadImage("rook_black.png")));
+      for (int i = 0; i < 8; i++) {
+         fields[i][1].setFigure(new ChessFigure(ChessFigureType.PAWN,
+               ChessColor.BLACK, loadImage("pawn_black.png")));
+      }
+
+   }
+
+   private Image loadImage(String name) {
+      try (InputStream is = getClass().getResourceAsStream(name)) {
+         return new Image(is);
+      } catch (IOException e) {
+         throw new RuntimeException("Bilddatei nicht gefunden: " + name, e);
+      }
    }
 
    /** Returns the 8×8 array of fields that make up the board. */

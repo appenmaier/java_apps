@@ -17,7 +17,11 @@ public abstract class BaseApp extends Application {
 
    @Override
    public void start(Stage primaryStage) throws Exception {
-      Parent root = FXMLLoader.load(getClass().getResource(getFxmlName()));
+      var resource = getClass().getResource(getFxmlName());
+      if (resource == null) {
+         throw new IllegalStateException("FXML-Datei nicht gefunden: " + getFxmlName());
+      }
+      Parent root = FXMLLoader.load(resource);
       primaryStage.setTitle(getTitle());
       primaryStage.setScene(new Scene(root));
       primaryStage.setResizable(false);

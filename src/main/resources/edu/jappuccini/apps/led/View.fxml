@@ -13,10 +13,10 @@
 	<children>
 		<Group>
 			<children>
-				<Circle fx:id="layer1" radius="25.0" />
-				<Circle fx:id="layer2" radius="50.0" />
-				<Circle fx:id="layer3" radius="75.0" />
-				<Circle fx:id="layer4" radius="100.0" />
+				<Circle fx:id="layer1" radius="15.0" />
+				<Circle fx:id="layer2" radius="80.0" />
+				<Circle fx:id="layer3" radius="150.0" />
+				<Circle fx:id="layer4" radius="220.0" />
 			</children>
 		</Group>
 		<HBox alignment="CENTER" spacing="5.0">

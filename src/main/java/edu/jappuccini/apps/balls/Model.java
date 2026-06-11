@@ -1,7 +1,7 @@
 package edu.jappuccini.apps.balls;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /** Singleton model that manages the collection of balls for the Balls application. */
 public class Model {
@@ -10,7 +10,7 @@ public class Model {
    private static final Model INSTANCE = new Model();
 
    private Model() {
-      balls = new ArrayList<>();
+      balls = new CopyOnWriteArrayList<>();
    }
 
    /** Returns the singleton instance of this model. */

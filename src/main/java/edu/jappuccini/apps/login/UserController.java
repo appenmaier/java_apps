@@ -18,7 +18,9 @@ public class UserController implements Initializable {
    public void initialize(URL location, ResourceBundle resources) {
       model = Model.getInstance();
       User user = model.getUser();
-      greetingsLabel.setText("Hallo " + user.getFirstName() + " " + user.getFamilyName());
+      if (user != null) {
+         greetingsLabel.setText("Hallo " + user.getFirstName() + " " + user.getFamilyName());
+      }
    }
 
 }

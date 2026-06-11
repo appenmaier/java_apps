@@ -48,6 +48,12 @@ public class Controller implements Initializable {
             return;
          }
 
+         if (!oldFieldIsNull && oldFigure == null) {
+            setHighlight(oldField, false);
+            oldField = null;
+            return;
+         }
+
          if (!oldFieldIsNull && !newFieldIsEmpty
                && newFigure.getColor().equals(oldFigure.getColor())) {
             setHighlight(oldField, false);

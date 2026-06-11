@@ -41,15 +41,15 @@ public class Controller implements Initializable {
          interestRate = Double.valueOf(interestRateTextField.getText());
          runningTime = Integer.valueOf(runningTimeTextField.getText());
       } catch (NumberFormatException e) {
-         Alert alert = new Alert(AlertType.ERROR, "Bitte nur ganze Zahlen eingeben");
+         Alert alert = new Alert(AlertType.ERROR,
+               "Ungültige Eingabe: Anfangskapital und Zinssatz als Dezimalzahl, Laufzeit als ganze Zahl eingeben");
          alert.show();
          interestLabel.setText("");
          return;
       }
 
       if (initialCapital <= 0 || interestRate <= 0 || runningTime <= 0) {
-         Alert alert =
-               new Alert(AlertType.ERROR, "Bitte nur ganze Zahlen größer als Null eingeben");
+         Alert alert = new Alert(AlertType.ERROR, "Alle Werte müssen größer als Null sein");
          alert.show();
          interestLabel.setText("");
          return;

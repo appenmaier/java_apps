@@ -2,8 +2,10 @@ package edu.jappuccini.apps.hexagons;
 
 import java.util.Random;
 
+import javafx.geometry.VPos;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import lombok.Getter;
 
@@ -18,6 +20,7 @@ public class Hexagon {
    private static final Color POSITIVE_COLOR = Color.DARKGREEN;
    private static final Color NEGATIVE_COLOR = Color.DARKRED;
    private final Polygon hexagon;
+   private final double centerX;
    private Text value;
    private boolean isFlipped;
 
@@ -25,10 +28,11 @@ public class Hexagon {
     * Creates a hexagon tile centered at ({@code x}, {@code y}) with the given {@code size}.
     *
     * @param size radius of the hexagon
-    * @param x    center x coordinate
-    * @param y    center y coordinate
+    * @param x center x coordinate
+    * @param y center y coordinate
     */
    public Hexagon(double size, double x, double y) {
+      centerX = x;
       /* Create Hexagon */
       hexagon = new Polygon();
       Double[] points = new Double[12];
@@ -43,10 +47,9 @@ public class Hexagon {
 
       /* Create Value */
       value = new Text();
-      value.setX(x);
+      value.setTextOrigin(VPos.CENTER);
+      value.setFont(Font.font(size));
       value.setY(y);
-      value.setScaleX(size / 20);
-      value.setScaleY(size / 20);
 
       /* Set Colors */
       hexagon.setFill(BASE_COLOR);
@@ -54,8 +57,8 @@ public class Hexagon {
    }
 
    /**
-    * Reveals the hexagon by assigning a random point value and changing its color
-    * to green for positive values or red for negative values.
+    * Reveals the hexagon by assigning a random point value and changing its color to green for
+    * positive values or red for negative values.
     */
    public void flip() {
       /* Set Flipped */
@@ -69,6 +72,7 @@ public class Hexagon {
          tmp = BASE_VALUE * -1 * RANDOM.nextInt(1, 4);
       }
       value.setText(String.valueOf(tmp));
+      value.setX(centerX - value.getBoundsInLocal().getWidth() / 2);
 
       /* Change Hexagon Color */
       if (tmp > 0) {

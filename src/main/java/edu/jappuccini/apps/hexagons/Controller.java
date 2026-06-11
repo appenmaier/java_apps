@@ -99,11 +99,16 @@ public class Controller {
       hexagon.flip();
 
       /* Add Points */
+      String valueText = hexagon.getValue().getText();
+      if (valueText == null || valueText.isEmpty()) {
+         return;
+      }
+      int hexagonValue = Integer.parseInt(valueText);
       if (currentPlayer == 1) {
-         points1 += Integer.valueOf(hexagon.getValue().getText());
+         points1 += hexagonValue;
          points1Text.setText(String.valueOf(points1));
       } else {
-         points2 += Integer.valueOf(hexagon.getValue().getText());
+         points2 += hexagonValue;
          points2Text.setText(String.valueOf(points2));
       }
 
